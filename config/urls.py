@@ -6,8 +6,16 @@ from rest_framework import routers, permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
+from django.contrib import admin
+from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
+from rest_framework import routers, permissions
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+
 # ViewSets
-from common.views import PrivacyPolicyViewSet
+from common.views import PrivacyPolicyViewSet, AboutUsViewSet, ForWhomViewSet, TestimonialViewSet
 from faq.views import FAQViewSet
 from investment.views import InvestmentStatViewSet, TeamMemberViewSet
 from blog.views import BlogViewSet
@@ -16,6 +24,9 @@ from contact.views import ContactSubmissionViewSet, ContactInfoViewSet
 # Router Setup
 router = routers.DefaultRouter()
 router.register(r'privacy-policy', PrivacyPolicyViewSet, basename='privacy-policy')
+router.register(r'about-us', AboutUsViewSet, basename='about-us')
+router.register(r'for-whom', ForWhomViewSet, basename='for-whom')
+router.register(r'testimonials', TestimonialViewSet, basename='testimonials')
 router.register(r'faqs', FAQViewSet, basename='faqs')
 router.register(r'investment-stats', InvestmentStatViewSet, basename='investment-stats')
 router.register(r'investment-team', TeamMemberViewSet, basename='investment-team')
